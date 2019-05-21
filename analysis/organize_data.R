@@ -19,3 +19,4 @@ colnames(sjsd) <- c("attended_event","socialize","travel_time","legal_mil","lega
                     "male","female","trans(m-f)","trans(f-m)","other","sex_identity","feel_better",
                     "hopeful","happy","enjoy_life") 
 
+
