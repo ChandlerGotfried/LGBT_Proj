@@ -18,5 +18,6 @@ sjsd <- subset(SJSD, select=c ("q1a","q1c","q4a","q4c","q5b","q6a","q6c","q13a",
 
 
 
+
  
 
