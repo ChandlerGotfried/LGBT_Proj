@@ -11,7 +11,8 @@ library(haven)
 SJSD <- read_sav("analysis/input/SJSD.sav")
 
 sjsd <- subset(SJSD, select=c ("q1a","q1c","q4a","q4c","q5b","q6a","q6c","q13a","q14a","q14b",
-                               "q14c","q14d","q14e","q15a","q18c","q24a","q24b","q24c","q24d"))
+                               "q14c","q14d","q14e","q15a","q18c","q24c","q24d"))
+
 
 
 
