@@ -25,6 +25,7 @@ sjsd$time <- factor(sjsd$time,
                              "90 minutes"))
 
 # recode current sexuality 
+
 sjsd$sex_id[sjsd$q18c==1 | sjsd$q18c==2 | sjsd$q18c==3 | sjsd$q18c==4 |
                   sjsd$q18c==5 | sjsd$q18c==6 | sjsd$q18c==7] <- "LGBTQ"
 sjsd$sex_id[sjsd$q18c==8] <- "Heterosexual"
