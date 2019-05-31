@@ -18,11 +18,11 @@ sjsd$q1c[sjsd$q1c==1] <- "15 minutes"
 sjsd$q1c[sjsd$q1c==2] <- "30 minutes"
 sjsd$q1c[sjsd$q1c==3] <- "45 minutes"
 sjsd$q1c[sjsd$q1c==4] <- "60 minutes"
-sjsd$q1c[sjsd$q1c==5 | sjsd$q1c==6] <- "90 minutes"
+sjsd$q1c[sjsd$q1c==5 | sjsd$q1c==6] <- "90 minutes or more"
 sjsd$q1c <- factor(sjsd$q1c, 
                     levels=c("15 minutes", "30 minutes",
                              "45 minutes", "60 minutes",
-                             "90 minutes"))
+                             "90 minutes or more"))
 
 # recode current sexual identity 
 
@@ -44,4 +44,20 @@ sjsd$q8a[sjsd$q8a==5 | sjsd$q8a==6] <- "Once a week or more"
 sjsd$q8a <- factor(sjsd$q8a,
                    levels=c("Never","Once/Twice a year","Six times a year","Once a month","Once a week or more"))
 
+# recode happiness
 
+sjsd$q24c[sjsd$q24c==1] <- "Never"
+sjsd$q24c[sjsd$q24c==2] <- "Sometimes"
+sjsd$q24c[sjsd$q24c==3] <- "A lot of the time"
+sjsd$q24c[sjsd$q24c==4] <- "Most of the time"
+sjsd$q24c <- factor(sjsd$q24c,
+                    levels=c("Never","Somtimes","A lot of the time","Most of the time"))
+
+#recode enjoying life
+
+sjsd$q24d[sjsd$q24d==1] <- "Never"
+sjsd$q24d[sjsd$q24d==2] <- "Sometimes"
+sjsd$q24d[sjsd$q24d==3] <- "A lot of the time"
+sjsd$q24d[sjsd$q24d==4] <- "Most of the time"
+sjsd$q24d <- factor(sjsd$q24d,
+                    levels=c("Never","Sometimes","A lot of the time","Most of the time"))
