@@ -26,6 +26,8 @@ abstract: This is a test abstract
 
 # Introduction
 
+In movies and television shows, we constantly see parents, friends, neighbors, and others judge an individual for coming out as queer or finding out they were queer. It gives queer individuals a false sense of what actually happens when coming out to peers. Although the movies may make it seem like a scary experience, in reality nowadays, it is a breath of fresh air. In 2010, however, our society was inbetween whether or not it supported queer indiviudals. America was almost split with a few more leaning in the support same sex indiviudals and relationships. This survey was created to see how the LGBT community felt being around society. Queer individuals coming out to their peers will feel more support, happiness, and overall enjoyment in life because they are able to be who they are. This data should show that although society is not perfect and has not fully accepted the queer community, there has been a lot of process made. The data is from 2010 so we should be able to notice a difference in how individuals felt then compared to how we see the queer community act today.     
+
 # Background
 
 # Data and Methods
