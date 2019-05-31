@@ -30,6 +30,8 @@ abstract: This is a test abstract
 
 # Data and Methods
 
+The data was collected using surveys in 2010. The original survey was a 105 item survey and was administered to over 5000 people. The strategy of data collection was through a variety of strategies, includng: venue-based sampling at strategic events, snowball sampling, respondent-driven sampling, and the internet.
+
 # Results
 
 # Conclusions
