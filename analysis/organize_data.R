@@ -30,11 +30,19 @@ sjsd$q14a <- factor(sjsd$q14a,
 boxplot(q15a~q14a, data=sjsd, na.rm=TRUE, names=c("None","Some","About half","Most","All"), 
         xlab="Coming out to family", ylab="Level of upport from family")
 
+count <- table(sjsd$q4a)
+percent <- 100*count/sum(count)
+barplot(percent, main="Gay marriage support", horiz=TRUE, names.arg = c("No", "Yes"),
+        xlab="Percent")
 
+counts <- table(sjsd$q4c)
+percent <- 100*counts/sum(counts)
+barplot(percent, main="Support of LGBT in the military", horiz=TRUE, names.arg = c("No", "Yes"),
+        xlab="Percent")
 
 tab <- table(sjsd$q4c, sjsd$q4a)
-barplot(t(prop.table(tab,1)), beside=TRUE, 
-        names.arg=c("Gay marriage","Military"), 
+percent <- 100*tab/sum(tab)
+barplot(t(prop.table(percent,1)), beside=TRUE, names.arg=c("Same-sex military","Gay marriage"), 
         las=1, main="Support gay marriage and\nsame sex military members", ylab="Percent of reponses for support", 
         col=c("darkgreen", "yellow"), legend.text=c("No","Yes"), cex.names="0.7")
 
