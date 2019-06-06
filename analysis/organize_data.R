@@ -75,7 +75,7 @@ sjsd$lgbt_bond <- sjsd$q6a+sjsd$q6c-2
 
 
 sjsd <- na.omit(subset(sjsd,
-                       select=c("out_family","happiness","out_friends","out_neighbors","fam_support",
+                       select=c("happiness","out_family","out_friends","out_neighbors","fam_support",
                                 "event","lgbt_bond","neigh_phobia","marriage","military")))
 
 save(sjsd, file="analysis/output/analytical_data.RData")
