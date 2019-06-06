@@ -19,3 +19,37 @@ library(ggplot2)
 <a href="#top">Back to top</a>
 
 Use this R Markdown to perform the main analysis for the project. I use this basically as a lab notebook. It contains the main analysis and a variety of sensitivity analysis. The code in this documents serves as a baseline for the eventual tables and figures that will go into the paper. At the same time it will serve as a record of all supplementary analyses performed.
+
+
+```{r setup, include=FALSE}
+count <- table(sjsd$q4a)
+percent <- 100*count/sum(count)
+barplot(percent, main="Gay marriage support", horiz=TRUE, names.arg = c("No", "Yes"),
+        xlab="Percent")
+```
+
+```{r setup, include=FALSE}
+counts <- table(sjsd$q4c)
+percent <- 100*counts/sum(counts)
+barplot(percent, main="Support of LGBT in the military", horiz=TRUE, names.arg = c("No", "Yes"),
+        xlab="Percent")
+```
+
+```{r setup, include=FALSE}
+percent <- cbind(prop.table(table(sjsd$q4c)), prop.table(table(sjsd$q4a)))*100
+barplot(percent, beside=TRUE, names.arg=c("Same-sex military","Gay marriage"), 
+        las=1, main="Support gay marriage and\nsame sex military members", ylab="Percent of reponses for support", 
+        col=c("darkgreen", "yellow"), legend.text=c("No","Yes"), cex.names="0.7")
+```
+
+```{r setup}
+boxplot(as.numeric(q15a)~q14a, data=sjsd, na.rm=TRUE,
+        names=c("None","Some","About half","Most","All"), 
+        xlab="Coming out to family", ylab="Level of support from family")
+```
+
+```{r setup}
+boxplot(as.numeric(happiness)~q14a, data=sjsd, na.rm=TRUE,
+        names=c("None","Some","About half","Most","All"),
+        xlab="Coming out to family", ylab="Level of happiness")
+```
