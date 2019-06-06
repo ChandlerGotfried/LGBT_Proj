@@ -43,7 +43,7 @@ barplot(percent, beside=TRUE, names.arg=c("Same-sex military","Gay marriage"),
 ```
 
 ```{r setup}
-boxplot(as.numeric(q15a)~q14a, data=sjsd, na.rm=TRUE,
+boxplot(as.numeric(fam_support)~out_family, data=sjsd, na.rm=TRUE,
         names=c("None","Some","About half","Most","All"), 
         xlab="Coming out to family", ylab="Level of support from family")
 ```
