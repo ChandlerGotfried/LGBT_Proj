@@ -65,7 +65,7 @@ model3 <- lm(happiness~fam_support*out_family+out_friends+out_neighbors+lgbt_bon
 ```{r compbarplot, echo=FALSE}
 percent <- cbind(prop.table(table(sjsd$marriage)), prop.table(table(sjsd$military)))*100
 barplot(percent, beside=TRUE, names.arg=c("Same-sex military","Gay marriage"), 
-        las=1, main="Support gay marriage and\nsame sex military members", ylab="Percent of reponses for support",
+        las=1, main="Support gay marriage and same sex military members", ylab="Percent of reponses for support",
         col=c("darkgreen", "yellow"), legend.text=c("No","Yes"), cex.names="0.7")
 ```
 
@@ -73,7 +73,7 @@ barplot(percent, beside=TRUE, names.arg=c("Same-sex military","Gay marriage"),
 ```{r boxplot1, echo=FALSE}
 ggplot(sjsd, aes(x=reorder(out_family, happiness, median), y=fam_support))+
   geom_boxplot(fill="gray", outlier.color = "black", varwidth = TRUE)+
-  labs(x="Coming out to family members", y="Family support", title="Boxplot of family support after coming\nout to family members")+
+  labs(x="Coming out to family members", y="Family support", title="Boxplot of family support after coming out to family members")+
   coord_flip()+
   theme_bw()
 ```
@@ -82,7 +82,7 @@ ggplot(sjsd, aes(x=reorder(out_family, happiness, median), y=fam_support))+
 ```{r boxplot2, echo=FALSE}
 ggplot(sjsd, aes(x=reorder(out_family, happiness, median), y=happiness))+
   geom_boxplot(fill="skyblue", outlier.color = "red", varwidth = TRUE)+
-  labs(x="Coming out to family members", y="Happiness", title="Boxplot of happiness after coming\nout to family members")+
+  labs(x="Coming out to family members", y="Happiness experienced", title="Boxplot of happiness experienced after coming out to family members")+
   coord_flip()+
   theme_bw()
 ```
@@ -99,7 +99,7 @@ ggplot(sjsd, aes(x=out_neighbors, y=neigh_phobia))+
 ```{r boxplot4, echo=FALSE}
 ggplot(sjsd, aes(x=out_neighbors, y=happiness))+
   geom_boxplot(fill="orange", outlier.color = "blue", varwidth = TRUE)+
-  labs(x="Coming out to neighbors", y="Happiness", title="Boxplot of coming out to neighbors and happiness")+
+  labs(x="Coming out to neighbors", y="Happiness experienced", title="Boxplot of coming out to neighbors and happiness")+
   coord_flip()+
   theme_bw()
 ```
@@ -108,7 +108,7 @@ ggplot(sjsd, aes(x=out_neighbors, y=happiness))+
 ```{r boxplot5, echo=FALSE}
 ggplot(sjsd, aes(x=event, y=lgbt_bond))+
   geom_boxplot(fill="red", outlier.color = "green", varwidth = TRUE)+
-  labs(y="Bond felt with LGBT community", x="Participates with LGBT events", title="Boxplot of LGBT events attended and\nthe bond felt with LGBT community")+
+  labs(y="Bond felt with LGBT community", x="Participates in LGBT events", title="Boxplot of LGBT events attended and\nthe bond felt with LGBT community")+
   coord_flip()+
   theme_bw()
 ```
@@ -117,7 +117,7 @@ ggplot(sjsd, aes(x=event, y=lgbt_bond))+
 ```{r boxplot6, echo=FALSE}
 ggplot(sjsd, aes(x=event, y=happiness))+
   geom_boxplot(fill="red", outlier.color = "green", varwidth = TRUE)+
-  labs(x="Events attended", y="Happiness", title="Boxplot of happiness expereinced from attending an event")+
+  labs(x="Participating in LGBT events", y="Happiness", title="Boxplot of happiness expereinced from attending an event")+
   coord_flip()+
   theme_bw()
 ```
