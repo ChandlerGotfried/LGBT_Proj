@@ -39,12 +39,12 @@ In movies and television shows, we constantly see parents, friends, neighbors, a
 
 # Background
 
+
 # Data and Methods
 
-The data was collected using surveys in 2010. The original survey was a 105 item survey and was administered to over 5000 people. The strategy of data collection was through a variety of strategies, includng: venue-based sampling at strategic events, snowball sampling, respondent-driven sampling, and the internet.
+The data was collected using surveys in 2010. The original survey was a 105 item survey and was administered to over 5000 people. The strategy of data collection was through a variety of strategies, includng: venue-based sampling at strategic events, snowball sampling, respondent-driven sampling, and the internet. The initial data set comprised of 4953 observations and 304 variables. After recoding and subsetting, we ended with 10 variables and 3241 observations and 10 variables. 
 
-
-
+Happiness was a combination of two questions: Over the past week, how many times have you felt happy and how many times have you enjoyed life? These we felt were similar so we combined them and subtracted two to make zero our base start. This is our dependent variable for our analysis. We combined another variable from two other questions: How connected do you feel to the LGBT community as a whole and how strong is your bond with others in the LGBT community? We used the same technique as the happiness variable and subtracted two to make our zero our base start. Other variables such as coming out to friends, family, and neighbors were given named labels rather than a numbered order. The same sex marriage and military data was given a true or false code rather than a 1 or 0 code. The rest of the data was left in numbered variables with a different variable name that makes it easier to understand. All the data but the two true or false variables were conducted using a 4,5, or 6-point likert scales making them ordinal variables. To focus on the LGBT community data, anyone who responded as straight was dropped from the subsetted data. This would help reduce biases from possible anti-LGBT thoughts or ideas from straight individuals especially since it is before being LGBT was accepted. 
 
 
 
@@ -59,21 +59,6 @@ model1 <- lm(happiness~fam_support+out_family, data=sjsd)
 model2 <- lm(happiness~fam_support+out_family+out_friends+out_neighbors, data=sjsd)
 model3 <- lm(happiness~fam_support*out_family+out_friends+out_neighbors+lgbt_bond+neigh_phobia+marriage+military,
              data=sjsd)
-```
-
-```{r barplot1, echo=FALSE}
-count <- table(sjsd$marriage)
-percent <- 100*count/sum(count)
-barplot(percent, main="Gay marriage support", horiz=TRUE, names.arg = c("No", "Yes"),
-        xlab="Percent")
-```
-
-
-```{r barplot2, echo=FALSE}
-counts <- table(sjsd$military)
-percent <- 100*counts/sum(counts)
-barplot(percent, main="Support of LGBT in the military", horiz=TRUE, names.arg = c("No", "Yes"),
-        xlab="Percent")
 ```
 
 
@@ -106,6 +91,33 @@ ggplot(sjsd, aes(x=reorder(out_family, happiness, median), y=happiness))+
 ggplot(sjsd, aes(x=out_neighbors, y=neigh_phobia))+
   geom_boxplot(fill="yellow", outlier.color = "green", varwidth = TRUE)+
   labs(x="Coming out to neighbors", y="Neighborhood phobia", title="Boxplot of coming out to neighbors and homophobia in the neighborhood")+
+  coord_flip()+
+  theme_bw()
+```
+
+
+```{r boxplot4, echo=FALSE}
+ggplot(sjsd, aes(x=out_neighbors, y=happiness))+
+  geom_boxplot(fill="orange", outlier.color = "blue", varwidth = TRUE)+
+  labs(x="Coming out to neighbors", y="Happiness", title="Boxplot of coming out to neighbors and happiness")+
+  coord_flip()+
+  theme_bw()
+```
+
+
+```{r boxplot5, echo=FALSE}
+ggplot(sjsd, aes(x=event, y=lgbt_bond))+
+  geom_boxplot(fill="red", outlier.color = "green", varwidth = TRUE)+
+  labs(y="Bond felt with LGBT community", x="Participates with LGBT events", title="Boxplot of LGBT events attended and\nthe bond felt with LGBT community")+
+  coord_flip()+
+  theme_bw()
+```
+
+
+```{r boxplot6, echo=FALSE}
+ggplot(sjsd, aes(x=event, y=happiness))+
+  geom_boxplot(fill="red", outlier.color = "green", varwidth = TRUE)+
+  labs(x="Events attended", y="Happiness", title="Boxplot of happiness expereinced from attending an event")+
   coord_flip()+
   theme_bw()
 ```
