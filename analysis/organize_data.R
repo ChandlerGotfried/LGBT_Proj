@@ -40,6 +40,17 @@ sjsd$out_friends <- factor(sjsd$out_friends,
                           levels=c("None","Some","About half","Most","All"))
 table(sjsd$out_friends, sjsd$q14b, exclude=NULL)
 
+# recode coming out to friends
+sjsd$out_neighbors <- NA
+sjsd$out_neighbors[sjsd$q14e==1] <- "None"
+sjsd$out_neighbors[sjsd$q14e==2] <- "Some"
+sjsd$out_neighbors[sjsd$q14e==3] <- "About half"
+sjsd$out_neighbors[sjsd$q14e==4] <- "Most"
+sjsd$out_neighbors[sjsd$q14e==5] <- "All"
+sjsd$out_neighbors <- factor(sjsd$out_neighbors,
+                           levels=c("None","Some","About half","Most","All"))
+table(sjsd$out_neighbors, sjsd$q14e, exclude=NULL)
+
 #recode gay marriage variable
 sjsd$marriage <- NA
 sjsd$marriage[sjsd$q4c==0] <- "False"
@@ -51,9 +62,6 @@ sjsd$military <- NA
 sjsd$military[sjsd$q4a==0] <- "False"
 sjsd$military[sjsd$q4a==1] <- "True"
 table(sjsd$military, sjsd$q4a, exclude=NULL)
-
-# change name for coming out to neighbors
-sjsd$out_neighbors <- sjsd$q14e
 
 # change name for family support
 sjsd$fam_support <- sjsd$q15a
