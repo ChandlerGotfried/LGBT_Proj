@@ -51,13 +51,27 @@ sjsd$out_neighbors <- factor(sjsd$out_neighbors,
                            levels=c("None","Some","About half","Most","All"))
 table(sjsd$out_neighbors, sjsd$q14e, exclude=NULL)
 
-#recode gay marriage variable
+# recode for participated in a LGBT event  
+sjsd$event <- NA
+sjsd$event[sjsd$q8a==1] <- "Never"
+sjsd$event[sjsd$q8a==2] <- "Once or twice a year"
+sjsd$event[sjsd$q8a==3] <- "Almost 6 times a year"
+sjsd$event[sjsd$q8a==4] <- "About once a month"
+sjsd$event[sjsd$q8a==5 | sjsd$q8a==6] <- "At least once a week"
+
+sjsd$event <- factor(sjsd$event,
+                     levels=c("Never","Once or twice a year","Almost 6 times a year","About once a month",
+                              "At least once a week"))
+table(sjsd$event, sjsd$q8a, exclude=NULL)
+
+
+# recode gay marriage variable
 sjsd$marriage <- NA
 sjsd$marriage[sjsd$q4c==0] <- "False"
 sjsd$marriage[sjsd$q4c==1] <- "True"
 table(sjsd$marriage, sjsd$q4c, exclude=NULL)
 
-#recode same sex military variable
+# recode same sex military variable
 sjsd$military <- NA
 sjsd$military[sjsd$q4a==0] <- "False"
 sjsd$military[sjsd$q4a==1] <- "True"
@@ -65,9 +79,6 @@ table(sjsd$military, sjsd$q4a, exclude=NULL)
 
 # change name for family support
 sjsd$fam_support <- sjsd$q15a
-
-# change name for participated in a LGBT event  
-sjsd$event <- sjsd$q8a
 
 # change name for neighborhood homophobia
 sjsd$neigh_phobia <- sjsd$q5b
