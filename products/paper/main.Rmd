@@ -69,6 +69,12 @@ barplot(percent, beside=TRUE, names.arg=c("Same-sex military","Gay marriage"),
         col=c("darkgreen", "yellow"), legend.text=c("No","Yes"), cex.names="0.7")
 ```
 
+```{r histogram1, echo=FALSE}
+ggplot(sjsd, aes(happiness))+
+  geom_histogram(binwidth=1, col="black")+
+  labs(x="Happiness experienced", title="Histogram of happiness experienced")+
+  theme_bw()
+```
 
 ```{r boxplot1, echo=FALSE}
 ggplot(sjsd, aes(x=reorder(out_family, happiness, median), y=fam_support))+
