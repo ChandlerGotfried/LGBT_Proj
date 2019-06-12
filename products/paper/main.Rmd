@@ -42,13 +42,14 @@ In movies and television shows, we constantly see parents, friends, neighbors, a
 
 # Data and Methods
 
-The data was collected using surveys in 2010. The original survey was a 105 item survey and was administered to over 5000 people. The strategy of data collection was through a variety of strategies, includng: venue-based sampling at strategic events, snowball sampling, respondent-driven sampling, and the internet. The initial data set comprised of 4953 observations and 304 variables. After recoding and subsetting, we ended with 10 variables and 3241 observations and 10 variables. 
+The data was collected using self reported surveys in 2010. The original survey was a 105 item survey and was administered to over 5000 people. The strategy of data collection was through a variety of strategies, includng: venue-based sampling at strategic events, snowball sampling, respondent-driven sampling, and the internet. The initial data set comprised of 4953 observations and 304 variables from all sexual identities. After recoding and subsetting, we ended with 10 variables and 3241 observations and 10 variables and only accounted for LGBT responses, not heterosexual responses. This is due to someone being heterosexual and being asked who they came out to which does not make sense. 
 
 Happiness was a combination of two questions: Over the past week, how many times have you felt happy and how many times have you enjoyed life? These we felt were similar so we combined them and subtracted two to make zero our base start. This is our dependent variable for our analysis. We combined another variable from two other questions: How connected do you feel to the LGBT community as a whole and how strong is your bond with others in the LGBT community? We used the same technique as the happiness variable and subtracted two to make our zero our base start. Other variables such as coming out to friends, family, and neighbors were given named labels rather than a numbered order. The same sex marriage and military data was given a true or false code rather than a 1 or 0 code. The rest of the data was left in numbered variables with a different variable name that makes it easier to understand. All the data but the two true or false variables were conducted using a 4,5, or 6-point likert scales making them ordinal variables. To focus on the LGBT community data, anyone who responded as straight was dropped from the subsetted data. This would help reduce biases from possible anti-LGBT thoughts or ideas from straight individuals especially since it is before being LGBT was accepted. 
 
-We calculated some 
+We calculated some univariate models to better understand what a few of our variables looked like before running mean difference boxplots. In figure 1, we see that a majority of people came out to all of their family members while some and most as well as none and about half were faily equal in responses. Figure 2 was a comparative barplot to show the percentage of individuals who support same sex marriage and military members. The results were less than I had anticiapted. Only around 95% said they are in support. Since we did remove heterosexual data from the datasets, one would have expected at least 99%, if not 100%, of individuals would be in favor of both same sex marriage and mititary members. In figure 3, the histogram shows that individuals are happy a lot (4) to most (6) of the time while very few are never (0) or somtimes (2) happy. Being that this data is from 2010, this is great becasue 2010 was a struggle for the LGBT community to really be recognized as equal to heterosexual community. It shows the positive views that the LGBT community has in a darker period of time. In figure 4, we show the support of family members for LGBT members. The histogram shows that family members are supportive of LGBT members and there is a steady decline on the left tail since we are reaching zero.  
 
 # Results
+
 
 # Conclusions
 
@@ -62,14 +63,14 @@ model3 <- lm(happiness~fam_support*out_family+out_friends+out_neighbors+lgbt_bon
 ```
 
 
-```{r setup, echo=FALSE}
+```{r barplot1, echo=FALSE}
 ggplot(sjsd, aes(x=out_family))+
   geom_bar()+
   labs(x="Coming out to family members", y="Frequency", title="Distribution of coming out to family members")+
   theme_bw()
 ```
 
-```{r compbarplot, echo=FALSE, fig.cap= Figure 1: The support for same sex marriage and military members in the SJSD 2010 dataset.}
+```{r compbarplot1, echo=FALSE, fig.cap= Figure 1: The support for same sex marriage and military members in the SJSD 2010 dataset.}
 percent <- cbind(prop.table(table(sjsd$marriage)), prop.table(table(sjsd$military)))*100
 barplot(percent, beside=TRUE, names.arg=c("Same-sex military","Gay marriage"), 
         las=1, main="Support same sex marriage and military members", ylab="Percent of reponses for support",
