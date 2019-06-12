@@ -2,8 +2,8 @@
 title: "Analysis for Project"
 output: 
   html_document: 
-    fig_height: 6
-    fig_width: 9
+    fig_height: 
+    fig_width: 
     toc: yes
     toc_depth: 4
 ---
@@ -11,8 +11,11 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE)
 source("useful_functions.R")
-load("output/analytical_data.RData")
+load("analysis/output/analytical_data.RData")
 library(ggplot2)
+library(tidyverse)
+library(mice)
+
 ```
 
 # Introduction
@@ -22,34 +25,34 @@ Use this R Markdown to perform the main analysis for the project. I use this bas
 
 
 ```{r setup, include=FALSE}
-count <- table(sjsd$q4a)
+count <- table(sjsd$marriage)
 percent <- 100*count/sum(count)
 barplot(percent, main="Gay marriage support", horiz=TRUE, names.arg = c("No", "Yes"),
         xlab="Percent")
 ```
 
 ```{r setup, include=FALSE}
-counts <- table(sjsd$q4c)
+counts <- table(sjsd$military)
 percent <- 100*counts/sum(counts)
 barplot(percent, main="Support of LGBT in the military", horiz=TRUE, names.arg = c("No", "Yes"),
         xlab="Percent")
 ```
 
 ```{r setup, include=FALSE}
-percent <- cbind(prop.table(table(sjsd$q4c)), prop.table(table(sjsd$q4a)))*100
+percent <- cbind(prop.table(table(sjsd$marriage)), prop.table(table(sjsd$military)))*100
 barplot(percent, beside=TRUE, names.arg=c("Same-sex military","Gay marriage"), 
-        las=1, main="Support gay marriage and\nsame sex military members", ylab="Percent of reponses for support", 
+        las=1, main="Support gay marriage and\nsame sex military members", ylab="Percent of reponses for support",
         col=c("darkgreen", "yellow"), legend.text=c("No","Yes"), cex.names="0.7")
 ```
 
-```{r setup}
+```{r setup, include=FALSE}
 boxplot(as.numeric(fam_support)~out_family, data=sjsd, na.rm=TRUE,
         names=c("None","Some","About half","Most","All"), 
         xlab="Coming out to family", ylab="Level of support from family")
 ```
 
-```{r setup}
-boxplot(as.numeric(happiness)~q14a, data=sjsd, na.rm=TRUE,
+```{r setup, include=FALSE}
+boxplot(as.numeric(happiness)~out_family, data=sjsd, na.rm=TRUE,
         names=c("None","Some","About half","Most","All"),
         xlab="Coming out to family", ylab="Level of happiness")
 ```

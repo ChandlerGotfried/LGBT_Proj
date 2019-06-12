@@ -24,9 +24,18 @@ thanks: Thanks to people and stuff
 abstract: This is a test abstract
 ---
 
+```{r, include=FALSE}
+load("../../analysis/output/analytical_data.RData")
+library(haven)
+library(ggplot2)
+library(knitr)
+library(texreg)
+library(tinytex)
+```
+
 # Introduction
 
-In movies and television shows, we constantly see parents, friends, neighbors, and others judge an individual for coming out as queer or finding out they were queer. It gives queer individuals a false sense of what actually happens when coming out to peers. Although the movies may make it seem like a scary experience, in reality nowadays, it is a breath of fresh air. In 2010, however, our society was inbetween whether or not it supported queer indiviudals. America was almost split with a few more leaning in the support same sex indiviudals and relationships. This survey was created to see how the LGBT community felt being around society. Queer individuals coming out to their peers will feel more support, happiness, and overall enjoyment in life because they are able to be who they are. This data should show that although society is not perfect and has not fully accepted the queer community, there has been a lot of process made. The data is from 2010 so we should be able to notice a difference in how individuals felt then compared to how we see the queer community act today.     
+In movies and television shows, we constantly see parents, friends, neighbors, and others judge an individual for coming out as queer or finding out they were queer. It gives queer individuals a false sense of what actually happens when coming out to peers. Although the movies may make it seem like a scary experience, in reality nowadays, it is a breath of fresh air. In 2010, however, our society was inbetween whether or not it supported queer indiviudals. America was almost split with a few more leaning in the support same sex indiviudals and relationships. This survey was created to see how the LGBT community felt being around society. Queer individuals coming out to their peers will feel more support, happiness, and overall enjoyment in life because they are able to be who they are. This data should show that although society is not perfect and has not fully accepted the queer community, there has been a lot of process made. The data is from 2010 so we should be able to notice a difference in how individuals felt then compared to how we see the queer community act today. Using this data we are going to analyze the overall happiness of individuals that disclose their sexual identity with neighbors, family, and friends.
 
 # Background
 
@@ -34,8 +43,69 @@ In movies and television shows, we constantly see parents, friends, neighbors, a
 
 The data was collected using surveys in 2010. The original survey was a 105 item survey and was administered to over 5000 people. The strategy of data collection was through a variety of strategies, includng: venue-based sampling at strategic events, snowball sampling, respondent-driven sampling, and the internet.
 
+
+
+
+
+
 # Results
 
 # Conclusions
 
 # References
+
+```{r textreg, results="asis", echo=FALSE, error=FALSE, message=FALSE}
+model1 <- lm(happiness~fam_support+out_family, data=sjsd)
+model2 <- lm(happiness~fam_support+out_family+out_friends+out_neighbors, data=sjsd)
+model3 <- lm(happiness~fam_support*out_family+out_friends+out_neighbors+lgbt_bond+neigh_phobia+marriage+military,
+             data=sjsd)
+```
+
+```{r barplot1, echo=FALSE}
+count <- table(sjsd$marriage)
+percent <- 100*count/sum(count)
+barplot(percent, main="Gay marriage support", horiz=TRUE, names.arg = c("No", "Yes"),
+        xlab="Percent")
+```
+
+
+```{r barplot2, echo=FALSE}
+counts <- table(sjsd$military)
+percent <- 100*counts/sum(counts)
+barplot(percent, main="Support of LGBT in the military", horiz=TRUE, names.arg = c("No", "Yes"),
+        xlab="Percent")
+```
+
+
+```{r compbarplot, echo=FALSE}
+percent <- cbind(prop.table(table(sjsd$marriage)), prop.table(table(sjsd$military)))*100
+barplot(percent, beside=TRUE, names.arg=c("Same-sex military","Gay marriage"), 
+        las=1, main="Support gay marriage and\nsame sex military members", ylab="Percent of reponses for support",
+        col=c("darkgreen", "yellow"), legend.text=c("No","Yes"), cex.names="0.7")
+```
+
+
+```{r boxplot1, echo=FALSE}
+ggplot(sjsd, aes(x=reorder(out_family, happiness, median), y=fam_support))+
+  geom_boxplot(fill="gray", outlier.color = "black", varwidth = TRUE)+
+  labs(x="Coming out to family members", y="Family support", title="Boxplot of family support after coming\nout to family members")+
+  coord_flip()+
+  theme_bw()
+```
+
+
+```{r boxplot2, echo=FALSE}
+ggplot(sjsd, aes(x=reorder(out_family, happiness, median), y=happiness))+
+  geom_boxplot(fill="skyblue", outlier.color = "red", varwidth = TRUE)+
+  labs(x="Coming out to family members", y="Happiness", title="Boxplot of happiness after coming\nout to family members")+
+  coord_flip()+
+  theme_bw()
+```
+
+```{r boxplot3, echo=FALSE}
+ggplot(sjsd, aes(x=out_neighbors, y=neigh_phobia))+
+  geom_boxplot(fill="yellow", outlier.color = "green", varwidth = TRUE)+
+  labs(x="Coming out to neighbors", y="Neighborhood phobia", title="Boxplot of coming out to neighbors and homophobia in the neighborhood")+
+  coord_flip()+
+  theme_bw()
+```
