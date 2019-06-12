@@ -46,7 +46,7 @@ The data was collected using surveys in 2010. The original survey was a 105 item
 
 Happiness was a combination of two questions: Over the past week, how many times have you felt happy and how many times have you enjoyed life? These we felt were similar so we combined them and subtracted two to make zero our base start. This is our dependent variable for our analysis. We combined another variable from two other questions: How connected do you feel to the LGBT community as a whole and how strong is your bond with others in the LGBT community? We used the same technique as the happiness variable and subtracted two to make our zero our base start. Other variables such as coming out to friends, family, and neighbors were given named labels rather than a numbered order. The same sex marriage and military data was given a true or false code rather than a 1 or 0 code. The rest of the data was left in numbered variables with a different variable name that makes it easier to understand. All the data but the two true or false variables were conducted using a 4,5, or 6-point likert scales making them ordinal variables. To focus on the LGBT community data, anyone who responded as straight was dropped from the subsetted data. This would help reduce biases from possible anti-LGBT thoughts or ideas from straight individuals especially since it is before being LGBT was accepted. 
 
-
+We calculated some 
 
 # Results
 
@@ -54,27 +54,42 @@ Happiness was a combination of two questions: Over the past week, how many times
 
 # References
 
-```{r textreg, results="asis", echo=FALSE, error=FALSE, message=FALSE}
-model1 <- lm(happiness~fam_support+out_family, data=sjsd)
-model2 <- lm(happiness~fam_support+out_family+out_friends+out_neighbors, data=sjsd)
-model3 <- lm(happiness~fam_support*out_family+out_friends+out_neighbors+lgbt_bond+neigh_phobia+marriage+military,
+```{r textreg, results="asis", echo=FALSE}
+model1 <- lm(happiness~fam_support, data=sjsd)
+model2 <- lm(happiness~fam_support+out_family, data=sjsd)
+model3 <- lm(happiness~fam_support*out_family+out_friends+out_neighbors+lgbt_bond+neigh_phobia+event,
              data=sjsd)
 ```
 
 
-```{r compbarplot, echo=FALSE}
+```{r setup, echo=FALSE}
+ggplot(sjsd, aes(x=out_family))+
+  geom_bar()+
+  labs(x="Coming out to family members", y="Frequency", title="Distribution of coming out to family members")+
+  theme_bw()
+```
+
+```{r compbarplot, echo=FALSE, fig.cap= Figure 1: The support for same sex marriage and military members in the SJSD 2010 dataset.}
 percent <- cbind(prop.table(table(sjsd$marriage)), prop.table(table(sjsd$military)))*100
 barplot(percent, beside=TRUE, names.arg=c("Same-sex military","Gay marriage"), 
-        las=1, main="Support gay marriage and same sex military members", ylab="Percent of reponses for support",
+        las=1, main="Support same sex marriage and military members", ylab="Percent of reponses for support",
         col=c("darkgreen", "yellow"), legend.text=c("No","Yes"), cex.names="0.7")
 ```
 
 ```{r histogram1, echo=FALSE}
 ggplot(sjsd, aes(happiness))+
   geom_histogram(binwidth=1, col="black")+
-  labs(x="Happiness experienced", title="Histogram of happiness experienced")+
+  labs(x="Happiness experienced",y="Frequency",title="Histogram of happiness experienced")+
   theme_bw()
 ```
+
+```{r histogram2, echo=FALSE}
+ggplot(sjsd, aes(fam_support))+
+  geom_histogram(binwidth=1, col="green")+
+  labs(x="LGBT family support",y="Frequency",title="Histogram of family support for LGBT members")+
+  theme_bw()
+```
+
 
 ```{r boxplot1, echo=FALSE}
 ggplot(sjsd, aes(x=reorder(out_family, happiness, median), y=fam_support))+
