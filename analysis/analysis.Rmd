@@ -2,16 +2,14 @@
 title: "Analysis for Project"
 output: 
   html_document: 
-    fig_height: 
-    fig_width: 
     toc: yes
     toc_depth: 4
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE)
+knitr::opts_chunk$set(echo = FALSE, warning=FALSE, message=FALSE)
 source("useful_functions.R")
-load("analysis/output/analytical_data.RData")
+load("output/analytical_data.RData")
 library(ggplot2)
 library(tidyverse)
 library(mice)
@@ -24,34 +22,34 @@ library(mice)
 Use this R Markdown to perform the main analysis for the project. I use this basically as a lab notebook. It contains the main analysis and a variety of sensitivity analysis. The code in this documents serves as a baseline for the eventual tables and figures that will go into the paper. At the same time it will serve as a record of all supplementary analyses performed.
 
 
-```{r setup, include=FALSE}
+```{r marriage}
 count <- table(sjsd$marriage)
 percent <- 100*count/sum(count)
 barplot(percent, main="Gay marriage support", horiz=TRUE, names.arg = c("No", "Yes"),
         xlab="Percent")
 ```
 
-```{r setup, include=FALSE}
+```{r military}
 counts <- table(sjsd$military)
 percent <- 100*counts/sum(counts)
 barplot(percent, main="Support of LGBT in the military", horiz=TRUE, names.arg = c("No", "Yes"),
         xlab="Percent")
 ```
 
-```{r setup, include=FALSE}
+```{r marriage-military}
 percent <- cbind(prop.table(table(sjsd$marriage)), prop.table(table(sjsd$military)))*100
 barplot(percent, beside=TRUE, names.arg=c("Same-sex military","Gay marriage"), 
         las=1, main="Support gay marriage and\nsame sex military members", ylab="Percent of reponses for support",
         col=c("darkgreen", "yellow"), legend.text=c("No","Yes"), cex.names="0.7")
 ```
 
-```{r setup, include=FALSE}
+```{r fam-support}
 boxplot(as.numeric(fam_support)~out_family, data=sjsd, na.rm=TRUE,
         names=c("None","Some","About half","Most","All"), 
         xlab="Coming out to family", ylab="Level of support from family")
 ```
 
-```{r setup, include=FALSE}
+```{r happiness}
 boxplot(as.numeric(happiness)~out_family, data=sjsd, na.rm=TRUE,
         names=c("None","Some","About half","Most","All"),
         xlab="Coming out to family", ylab="Level of happiness")
