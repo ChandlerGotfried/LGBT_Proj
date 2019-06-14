@@ -80,7 +80,7 @@ ggplot(sjsd, aes(x=out_family))+
   theme_bw()
 ```
 
-```{r compbarplot1, echo=FALSE, fig.cap= Figure 1: The support for same sex marriage and military members in the SJSD 2010 dataset.}
+```{r compbarplot, echo=FALSE}
 percent <- cbind(prop.table(table(sjsd$marriage)), prop.table(table(sjsd$military)))*100
 barplot(percent, beside=TRUE, names.arg=c("Same-sex military","Gay marriage"), 
         las=1, main="Support same sex marriage and military members", ylab="Percent of reponses for support",
