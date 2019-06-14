@@ -22,35 +22,83 @@ library(mice)
 Use this R Markdown to perform the main analysis for the project. I use this basically as a lab notebook. It contains the main analysis and a variety of sensitivity analysis. The code in this documents serves as a baseline for the eventual tables and figures that will go into the paper. At the same time it will serve as a record of all supplementary analyses performed.
 
 
-```{r marriage}
-count <- table(sjsd$marriage)
-percent <- 100*count/sum(count)
-barplot(percent, main="Gay marriage support", horiz=TRUE, names.arg = c("No", "Yes"),
-        xlab="Percent")
+```{r barplot1, echo=FALSE}
+ggplot(sjsd, aes(x=out_family))+
+  geom_bar()+
+  labs(x="Coming out to family members", y="Frequency", title="Distribution of coming out to family members")+
+  theme_bw()
 ```
 
-```{r military}
-counts <- table(sjsd$military)
-percent <- 100*counts/sum(counts)
-barplot(percent, main="Support of LGBT in the military", horiz=TRUE, names.arg = c("No", "Yes"),
-        xlab="Percent")
-```
-
-```{r marriage-military}
+```{r compbarplot, echo=FALSE}
 percent <- cbind(prop.table(table(sjsd$marriage)), prop.table(table(sjsd$military)))*100
 barplot(percent, beside=TRUE, names.arg=c("Same-sex military","Gay marriage"), 
-        las=1, main="Support gay marriage and\nsame sex military members", ylab="Percent of reponses for support",
+        las=1, main="Support same sex marriage and military members", ylab="Percent of reponses for support",
         col=c("darkgreen", "yellow"), legend.text=c("No","Yes"), cex.names="0.7")
 ```
 
-```{r fam-support}
-boxplot(as.numeric(fam_support)~out_family, data=sjsd, na.rm=TRUE,
-        names=c("None","Some","About half","Most","All"), 
-        xlab="Coming out to family", ylab="Level of support from family")
+```{r histogram1, echo=FALSE}
+ggplot(sjsd, aes(happiness))+
+  geom_histogram(binwidth=1, col="black")+
+  labs(x="Happiness experienced",y="Frequency",title="Histogram of happiness experienced")+
+  theme_bw()
 ```
 
-```{r happiness}
-boxplot(as.numeric(happiness)~out_family, data=sjsd, na.rm=TRUE,
-        names=c("None","Some","About half","Most","All"),
-        xlab="Coming out to family", ylab="Level of happiness")
+```{r histogram2, echo=FALSE}
+ggplot(sjsd, aes(fam_support))+
+  geom_histogram(binwidth=1, col="green")+
+  labs(x="LGBT family support",y="Frequency",title="Histogram of family support for LGBT members")+
+  theme_bw()
+```
+
+
+```{r boxplot1, echo=FALSE}
+ggplot(sjsd, aes(x=reorder(out_family, happiness, median), y=fam_support))+
+  geom_boxplot(fill="gray", outlier.color = "black", varwidth = TRUE)+
+  labs(x="Coming out to family members", y="Family support", title="Boxplot of family support after coming out to family members")+
+  coord_flip()+
+  theme_bw()
+```
+
+
+```{r boxplot2, echo=FALSE}
+ggplot(sjsd, aes(x=reorder(out_family, happiness, median), y=happiness))+
+  geom_boxplot(fill="skyblue", outlier.color = "red", varwidth = TRUE)+
+  labs(x="Coming out to family members", y="Happiness experienced", title="Boxplot of happiness experienced after coming out to family members")+
+  coord_flip()+
+  theme_bw()
+```
+
+```{r boxplot3, echo=FALSE}
+ggplot(sjsd, aes(x=out_neighbors, y=neigh_phobia))+
+  geom_boxplot(fill="yellow", outlier.color = "green", varwidth = TRUE)+
+  labs(x="Coming out to neighbors", y="Neighborhood phobia", title="Boxplot of coming out to neighbors and homophobia in the neighborhood")+
+  coord_flip()+
+  theme_bw()
+```
+
+
+```{r boxplot4, echo=FALSE}
+ggplot(sjsd, aes(x=out_neighbors, y=happiness))+
+  geom_boxplot(fill="orange", outlier.color = "blue", varwidth = TRUE)+
+  labs(x="Coming out to neighbors", y="Happiness experienced", title="Boxplot of coming out to neighbors and happiness")+
+  coord_flip()+
+  theme_bw()
+```
+
+
+```{r boxplot5, echo=FALSE}
+ggplot(sjsd, aes(x=event, y=lgbt_bond))+
+  geom_boxplot(fill="red", outlier.color = "green", varwidth = TRUE)+
+  labs(y="Bond felt with LGBT community", x="Participates in LGBT events", title="Boxplot of LGBT events attended and\nthe bond felt with LGBT community")+
+  coord_flip()+
+  theme_bw()
+```
+
+
+```{r boxplot6, echo=FALSE}
+ggplot(sjsd, aes(x=event, y=happiness))+
+  geom_boxplot(fill="red", outlier.color = "green", varwidth = TRUE)+
+  labs(x="Participating in LGBT events", y="Happiness", title="Boxplot of happiness expereinced from attending an event")+
+  coord_flip()+
+  theme_bw()
 ```
