@@ -35,7 +35,7 @@ library(tinytex)
 
 # Introduction
 
-In movies and television shows, we constantly see parents, friends, neighbors, and others judge an individual for coming out as queer or finding out they were queer. It gives queer individuals a false sense of what actually happens when coming out to peers. Although the movies may make it seem like a scary experience, in reality nowadays, it is a breath of fresh air. In 2010, however, our society was inbetween whether or not it supported queer indiviudals. America was almost split with a few more leaning in the support same sex indiviudals and relationships. This survey was created to see how the LGBT community felt being around society. Queer individuals coming out to their peers will feel more support, happiness, and overall enjoyment in life because they are able to be who they are. This data should show that although society is not perfect and has not fully accepted the queer community, there has been a lot of process made. The data is from 2010 so we should be able to notice a difference in how individuals felt then compared to how we see the queer community act today. Using this data construction, we are going to analyze the overall happiness of individuals that disclose their sexual identity with neighbors, family, and friends and whether it is better to come out than hold it in.
+In movies and television shows, we constantly see parents, friends, neighbors, and others judge an individual for coming out or finding out the indiviudal is LGBT. It gives LGBT individuals a false sense of what actually happens when coming out to peers. Although the movies may make it seem like a scary experience, in reality, it is a breath of fresh air. In 2010, however, our society was inbetween whether or not it supported LGBT indiviudals. America was almost split with a few more leaning in the support same sex indiviudals and relationships. This survey was created to see how the LGBT community felt being in the American society. LGBT individuals coming out to their peers will feel more support, happiness, and overall enjoyment in life because they are able to be who they are. This data should show that although society is not perfect and has not fully accepted the LGBT community, there has been a lot of progress made. The data is from 2010 so we should be able to notice a difference in how individuals felt then compared to how we see the LGBT community act today. Using this data construction, we are going to analyze the overall happiness of individuals that disclose their sexual identity with neighbors, family, and friends and whether it is better to come out than hold it in.
 
 # Background
 
@@ -61,15 +61,14 @@ Going to events may help build a relationship among LGBT individuals. Figure 5 d
 
 For the 6 boxplots, we have found that when someone comes out or is engaged with the LGBT community, they are, on average, happier than those who do not come out or attend. Also those who come out feel more support and less prejudice for being LGBT. The models show that coming out is a good experience and has a positive effect in the LGBT individual's life. 
 
-There were some limitations to the data and research conducted. The survey was based on feelings and thoughts. It is hard to judge an neighborhoods of homophobic actions if there is no proof of it. Also, a family member being supportive is hard to really see because humans have become good at hiding their true emotions or intentions. Yoou can not base merely off of feelings.
+There were some limitations to the data and research conducted. The survey was based on feelings and thoughts. It is hard to judge an neighborhoods of homophobic actions if there is no proof of it. Also, a family member being supportive is hard to really see because humans have become good at hiding their true emotions or intentions. You can not base merely off of feelings.
 
 # References
 
 ```{r textreg, results="asis", echo=FALSE}
 model1 <- lm(happiness~fam_support, data=sjsd)
-model2 <- lm(happiness~fam_support+out_family, data=sjsd)
-model3 <- lm(happiness~fam_support*out_family+out_friends+out_neighbors+lgbt_bond+neigh_phobia+event,
-             data=sjsd)
+model2 <- lm(happiness~fam_support+out_family+out_friends+out_neighbors+lgbt_bond+neigh_phobia+event, data=sjsd)
+model3 <- lm(happiness~fam_support*out_family+out_friends+out_neighbors+lgbt_bond+neigh_phobia+event, data=sjsd)
 ```
 
 
