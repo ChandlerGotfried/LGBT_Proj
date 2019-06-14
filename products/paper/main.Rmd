@@ -14,11 +14,11 @@ pagenumber: 1
 bibliography: ../project.bib
 biblio-style: ./resources/ajs.bst
 title: LGBT Happiness
-author: Chandler Gotfried
+author: 
+- affiliation: University of Oregon, Sociology
+  name: Chander Gotfried
 - affiliation: University of Oregon, Sociology
   name: Aaron Gullickson
-- affiliation: Some Research University
-  name: My co-author
 keywords: keywords
 thanks: Thanks to people and stuff
 abstract: This is a test abstract
