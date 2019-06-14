@@ -13,8 +13,8 @@ endnotes: false
 pagenumber: 1
 bibliography: ../project.bib
 biblio-style: ./resources/ajs.bst
-title: "The Title"
-author:
+title: "LGBT Happiness"
+author: Chandler Gotfried
 - affiliation: University of Oregon, Sociology
   name: Aaron Gullickson
 - affiliation: Some Research University
@@ -55,7 +55,7 @@ Going to events may help build a relationship among LGBT individuals. Figure 5 d
 
 # Conclusions
 
-For the 6 boxplots, we have found that when someone comes out or is engaged with the LGBT community, they are, on average, happier than those who do not come out or attend. Also those who come out feel more support and less prejudice for being LGBT. The models show that coming out is a good experience and has a positive effect in the LGBT individual's life. There were some limitations to the data and research conducted. The survey was based on feelings and thoughts. It is hard to judge an neighborhoods of homophobic actions if there is no proof of it. Also, a family member being supportive is hard to really see because humans have become good at hiding their true emotions or intentions. You can not base merely off of feelings.
+For the 6 boxplots, we have found that when someone comes out to family and neighbors or is engaged with the LGBT community, they are, on average, happier than those who do not come out or attend events. Also those who come out feel more support and less prejudice for being LGBT by family and neighbors. The models show that coming out is a good experience and has a positive effect in the LGBT individual's life. There were some limitations to the data and research conducted. The survey was based on feelings and thoughts. It is hard to judge the neighborhoods thoughts about homophobia and there is no proof unless explicitly stated. Also, a family member being supportive is hard to notice because humans have become good at hiding their true emotions and thoughts. You can not base merely off of what you feel or think.
 
 # References
 
