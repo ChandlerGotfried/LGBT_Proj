@@ -37,9 +37,6 @@ library(tinytex)
 
 In movies and television shows, we constantly see parents, friends, neighbors, and others judge an individual for coming out or finding out the indiviudal is LGBT. It gives LGBT individuals a false sense of what actually happens when coming out to peers. Although the movies may make it seem like a scary experience, in reality, it is a breath of fresh air. In 2010, however, our society was inbetween whether or not it supported LGBT indiviudals. America was almost split with a few more leaning in the support same sex indiviudals and relationships. This survey was created to see how the LGBT community felt being in the American society. LGBT individuals coming out to their peers will feel more support, happiness, and overall enjoyment in life because they are able to be who they are. This data should show that although society is not perfect and has not fully accepted the LGBT community, there has been a lot of progress made. The data is from 2010 so we should be able to notice a difference in how individuals felt then compared to how we see the LGBT community act today. Using this data construction, we are going to analyze the overall happiness of individuals that disclose their sexual identity with neighbors, family, and friends and whether it is better to come out than hold it in.
 
-# Background
-
-
 # Data and Methods
 
 The data was collected using self reported surveys in 2010. The original survey was a 105 item survey and was administered to over 5000 people. The strategy of data collection was through a variety of strategies, includng: venue-based sampling at strategic events, snowball sampling, respondent-driven sampling, and the internet. The initial data set comprised of 4953 observations and 304 variables from all sexual identities. After recoding and subsetting, we ended with 10 variables and 3241 observations and 10 variables and only accounted for LGBT responses, not heterosexual responses. This is due to someone being heterosexual and being asked who they came out to which does not make sense. 
@@ -56,21 +53,11 @@ We start by viewing whether the LGBT individual told their neighbors and how the
 
 Going to events may help build a relationship among LGBT individuals. Figure 5 displays that when an individual attends a LGBT event, they are more likely to feel closer to the LGBT community. Even just attending one event a year can increase the bond they have with the community. Those who never attend, feel more disconnect to the LGBT community. These results can be explained by thinking about a single individual compared to a community. When someone is alone, they feel lonely and disconnected but when inserted into a group of people with similar identites, they are more likely to be happier. For figure 6 we test whether this is true. When comparing happiness with attending an event, we see the previous idea is true. When someone attends an event, even if it is just one event in a year, they feel happier while someone who does not attend an LGBT event feels less happy. Again, this is because they are with a group of people with similar interests. 
 
-
 # Conclusions
 
-For the 6 boxplots, we have found that when someone comes out or is engaged with the LGBT community, they are, on average, happier than those who do not come out or attend. Also those who come out feel more support and less prejudice for being LGBT. The models show that coming out is a good experience and has a positive effect in the LGBT individual's life. 
-
-There were some limitations to the data and research conducted. The survey was based on feelings and thoughts. It is hard to judge an neighborhoods of homophobic actions if there is no proof of it. Also, a family member being supportive is hard to really see because humans have become good at hiding their true emotions or intentions. You can not base merely off of feelings.
+For the 6 boxplots, we have found that when someone comes out or is engaged with the LGBT community, they are, on average, happier than those who do not come out or attend. Also those who come out feel more support and less prejudice for being LGBT. The models show that coming out is a good experience and has a positive effect in the LGBT individual's life. There were some limitations to the data and research conducted. The survey was based on feelings and thoughts. It is hard to judge an neighborhoods of homophobic actions if there is no proof of it. Also, a family member being supportive is hard to really see because humans have become good at hiding their true emotions or intentions. You can not base merely off of feelings.
 
 # References
-
-```{r textreg, results="asis", echo=FALSE}
-model1 <- lm(happiness~fam_support, data=sjsd)
-model2 <- lm(happiness~fam_support+out_family+out_friends+out_neighbors+lgbt_bond+neigh_phobia+event, data=sjsd)
-model3 <- lm(happiness~fam_support*out_family+out_friends+out_neighbors+lgbt_bond+neigh_phobia+event, data=sjsd)
-```
-
 
 ```{r barplot1, echo=FALSE}
 ggplot(sjsd, aes(x=out_family))+
