@@ -13,15 +13,14 @@ endnotes: false
 pagenumber: 1
 bibliography: ../project.bib
 biblio-style: ./resources/ajs.bst
-title: LGBT Happiness
+title: Happiness of LGBT Members Coming Out
 author: 
 - affiliation: University of Oregon, Sociology
-  name: Chander Gotfried
+name: Chandler Gotfried
 - affiliation: University of Oregon, Sociology
-  name: Aaron Gullickson
-keywords: keywords
-thanks: Thanks to people and stuff
-abstract: This is a test abstract
+name: Aaron Gullickson
+keywords: LGBT, Happiness, Support, Family, Neighbors
+
 ---
 
 ```{r, include=FALSE}
@@ -59,14 +58,14 @@ Does coming out to family and neighbors create happiness and feeling of support 
 
 # References
 
-```{r barplot1, echo=FALSE}
+```{r barplot1, echo=FALSE, warning=FALSE}
 ggplot(sjsd, aes(x=out_family))+
   geom_bar()+
   labs(x="Coming out to family members", y="Frequency", title="Distribution of coming out to family members")+
   theme_bw()
 ```
 
-```{r compbarplot, echo=FALSE}
+```{r compbarplot, echo=FALSE,warning=FALSE}
 percent <- cbind(prop.table(table(sjsd$marriage)), prop.table(table(sjsd$military)))*100
 barplot(percent, beside=TRUE, names.arg=c("Same-sex military","Gay marriage"), 
         las=1, main="Support same sex marriage and military members", ylab="Percent of reponses for support",
